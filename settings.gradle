@@ -1,0 +1,2 @@
+rootProject.name = "Sofegram"
+include ':app'
