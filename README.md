@@ -1,1 +1,1 @@
-Sofegram
+Sofegram, clone Telegram
