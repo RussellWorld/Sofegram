@@ -14,6 +14,8 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.russellworld.sofegram.databinding.ActivityMainBinding
+import com.russellworld.sofegram.ui.ChatsFragment
+import com.russellworld.sofegram.ui.SettingsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFun() {
         setSupportActionBar(mToolBar)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.dataContainer, ChatsFragment()).commit()
+
         createHeader()
         createDrawer()
 
@@ -106,7 +111,12 @@ class MainActivity : AppCompatActivity() {
                     position: Int,
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
-                    Toast.makeText(applicationContext,"Click",Toast.LENGTH_LONG).show()
+                   when(position){
+                       7 -> supportFragmentManager.beginTransaction()
+                           .addToBackStack(null)
+                           .replace(R.id.dataContainer, SettingsFragment())
+                           .commit()
+                   }
                     return false
                 }
             })
