@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "474457782074",
+    "project_id": "sofegram-b09de",
+    "storage_bucket": "sofegram-b09de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:474457782074:android:4b37ee0249459135f90203",
+        "android_client_info": {
+          "package_name": "com.russellworld.sofegram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "474457782074-uq7ir8uj4s31jmmqcn5v2l0rmjvkngo4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_S3uouSW13lOzQTI5boKhcRYhLvVEJ-A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "474457782074-uq7ir8uj4s31jmmqcn5v2l0rmjvkngo4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
