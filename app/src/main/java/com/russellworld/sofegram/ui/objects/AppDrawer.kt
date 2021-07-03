@@ -13,6 +13,7 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.ui.fragments.SettingsFragment
+import com.russellworld.sofegram.utilits.replaceFragment
 
 class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
     lateinit var mDrawer: Drawer
@@ -88,10 +89,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     when (position) {
-                        7 -> mainActivity.supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.dataContainer, SettingsFragment())
-                            .commit()
+                        7 -> mainActivity.replaceFragment(SettingsFragment())
                     }
                     return false
                 }

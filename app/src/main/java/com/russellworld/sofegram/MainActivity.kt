@@ -8,6 +8,8 @@ import com.russellworld.sofegram.activities.RegisterActivity
 import com.russellworld.sofegram.databinding.ActivityMainBinding
 import com.russellworld.sofegram.ui.fragments.ChatsFragment
 import com.russellworld.sofegram.ui.objects.AppDrawer
+import com.russellworld.sofegram.utilits.replaceActivity
+import com.russellworld.sofegram.utilits.replaceFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,16 +39,11 @@ class MainActivity : AppCompatActivity() {
         if (false) {
             setSupportActionBar(mToolBar)
             mAppDrawer.create()
-            supportFragmentManager.beginTransaction()
-                .replace(
-                    R.id.dataContainer, ChatsFragment()
-                ).commit()
+            replaceFragment(ChatsFragment())
+
         } else {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            replaceActivity(RegisterActivity())
         }
-
-
     }
 
 }

@@ -33,6 +33,7 @@
         </item> <!-- Enables legacy Material 1 style -->
         <item name="android:colorBackground">@color/white</item>
         <item name="popupTheme">@style/actionMenu</item>
+        <item name="android:colorControlActivated">@color/colorPrimary</item>
     </style>
 
     <style name="actionMenu" parent="Theme.AppCompat.Light">

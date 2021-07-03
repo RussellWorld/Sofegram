@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.databinding.FragmentEnterPhoneNumberBinding
+import com.russellworld.sofegram.utilits.replaceFragment
+import com.russellworld.sofegram.utilits.showToast
 
 class EnterPhoneNumberFragment : Fragment() {
 
@@ -29,14 +30,10 @@ class EnterPhoneNumberFragment : Fragment() {
 
     private fun sendCode() {
         if (binding.registerInputNumberPhone.text.toString().isEmpty()) {
-            Toast.makeText(activity, getString(R.string.registr_toast_enter), Toast.LENGTH_SHORT)
-                .show()
+            showToast(getString(R.string.registr_toast_enter))
 
         } else {
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.registerDataContainer, EnterCodeFragment())
-                ?.addToBackStack(null)
-                ?.commit()
+            replaceFragment(EnterCodeFragment())
         }
     }
 }
