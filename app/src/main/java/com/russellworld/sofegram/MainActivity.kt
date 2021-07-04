@@ -10,6 +10,8 @@ import com.russellworld.sofegram.ui.fragments.ChatsFragment
 import com.russellworld.sofegram.ui.objects.AppDrawer
 import com.russellworld.sofegram.utilits.replaceActivity
 import com.russellworld.sofegram.utilits.replaceFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.russellworld.sofegram.utilits.AUTH
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,13 +35,14 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolBar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolBar)
+        AUTH = FirebaseAuth.getInstance()
     }
 
     private fun initFun() {
-        if (false) {
+        if (AUTH.currentUser != null) {
             setSupportActionBar(mToolBar)
             mAppDrawer.create()
-            replaceFragment(ChatsFragment())
+            replaceFragment(ChatsFragment(), false)
 
         } else {
             replaceActivity(RegisterActivity())

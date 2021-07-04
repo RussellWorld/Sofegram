@@ -51,7 +51,6 @@
         android:gravity="center"
         android:hint="@string/registerHint_numberPhone"
         android:ems="6"
-        android:maxLength="6"
         android:background="@color/grey_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
