@@ -12,6 +12,7 @@ import com.russellworld.sofegram.utilits.replaceActivity
 import com.russellworld.sofegram.utilits.replaceFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.russellworld.sofegram.utilits.AUTH
+import com.russellworld.sofegram.utilits.initFirebase
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolBar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolBar)
-        AUTH = FirebaseAuth.getInstance()
+        initFirebase()
     }
 
     private fun initFun() {

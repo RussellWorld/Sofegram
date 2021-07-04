@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.databinding.ActivityRegisterBinding
 import com.russellworld.sofegram.ui.fragments.EnterPhoneNumberFragment
+import com.russellworld.sofegram.utilits.initFirebase
 import com.russellworld.sofegram.utilits.replaceActivity
 import com.russellworld.sofegram.utilits.replaceFragment
 
@@ -18,6 +19,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        initFirebase()
     }
 
     override fun onStart() {
