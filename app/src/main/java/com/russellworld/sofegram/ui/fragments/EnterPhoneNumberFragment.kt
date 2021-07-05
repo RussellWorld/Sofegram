@@ -47,13 +47,13 @@ class EnterPhoneNumberFragment : Fragment() {
                 }
             }
 
+
             override fun onVerificationFailed(p0: FirebaseException) {
                 showToast(p0.message.toString())
             }
 
             override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
-             replaceFragment(EnterCodeFragment(mPhoneNumber, id))
-
+                replaceFragment(EnterCodeFragment(mPhoneNumber,id))
             }
         }
 
@@ -71,14 +71,22 @@ class EnterPhoneNumberFragment : Fragment() {
 
     private fun authUser() {
         mPhoneNumber = binding.registerInputNumberPhone.text.toString()
-        PhoneAuthProvider.verifyPhoneNumber(
-            PhoneAuthOptions
-                .newBuilder(FirebaseAuth.getInstance())
-                .setActivity(activity as RegisterActivity)
-                .setPhoneNumber(mPhoneNumber)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setCallbacks(mCallback)
-                .build()
+
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+            mPhoneNumber,
+            60,
+            TimeUnit.SECONDS,
+            activity as RegisterActivity,
+            mCallback
         )
+//        PhoneAuthProvider.verifyPhoneNumber(
+//            PhoneAuthOptions
+//                .newBuilder(FirebaseAuth.getInstance())
+//                .setActivity(activity as RegisterActivity)
+//                .setPhoneNumber(mPhoneNumber)
+//                .setTimeout(60L, TimeUnit.SECONDS)
+//                .setCallbacks(mCallback)
+//                .build()
+//        )
     }
 }

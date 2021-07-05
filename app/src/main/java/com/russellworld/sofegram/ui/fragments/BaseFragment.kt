@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.russellworld.sofegram.MainActivity
 import com.russellworld.sofegram.R
 
 
@@ -22,7 +23,13 @@ open class BaseFragment(val layout: Int) : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        (activity as MainActivity).mAppDrawer.disableDrawer()
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as MainActivity).mAppDrawer.enableDrawer()
     }
 
 }
