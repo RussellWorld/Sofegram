@@ -2,4 +2,16 @@
     <string name="app_name">Sofegram</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--    Setting fragment-->
+    <string name="settings_default_username">Ruslan Mir</string>
+    <string name="setting_status">В сети</string>
+    <string name="setting_text_account">Аккаунт</string>
+    <string name="setting_default_number">+375 282282323</string>
+    <string name="settings_text_label_numberPhone">Нажмите, чтобы изменить номер телефона</string>
+    <string name="setting_default_login">RuslanMir</string>
+    <string name="settings_text_label_login">Имя пользователя</string>
+    <string name="setting_default_bio">О себе</string>
+    <string name="settings_text_label_bio">Напишите немного о себе</string>
 </resources>

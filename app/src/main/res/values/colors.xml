@@ -14,6 +14,9 @@
     <color name="material_drawer_primary_dark">#1976D2</color>
     <color name="material_drawer_primary_light">#BBDEFB</color>
     <color name="material_drawer_accent">#FDF8FA</color>
+    <color name="grey">#8A7C7A7A</color>
+    <color name="grey_dark">#8A000000</color>
+    <color name="grey_light">#1F000000</color>
 
     <!-- OVERWRITE THESE COLORS FOR A LIGHT THEME -->
     <!-- MaterialDrawer DEFAULT colors -->
@@ -46,4 +49,7 @@
     <color name="material_drawer_dark_selected_text">@color/material_drawer_primary</color>
     <color name="material_drawer_dark_header_selection_text">#FFFFFFFF</color>
     <color name="material_drawer_dark_header_selection_subtext">#B3FFFFFF</color>
+
+    <!--    Setting fragment -->
+    <color name="settings_border_color"></color>
 </resources>

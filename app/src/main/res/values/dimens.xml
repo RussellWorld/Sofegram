@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="horizontal_margin">16dp</dimen>
+    <dimen name="normalText">16sp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+
+    <!--Setting fragment-->
+    <dimen name="settings_user_photo_width">56dp</dimen>
+    <dimen name="settings_user_photo_height">56dp</dimen>
+    <dimen name="settings_btn_change_photo_width">45dp</dimen>
+    <dimen name="settings_btn_change_photo_height">45dp</dimen>
+    <dimen name="settings_user_photo_border">2dp</dimen>
+    <dimen name="settings_header_height">100dp</dimen>
+
+    <dimen name="smallText">14sp</dimen>
+    <dimen name="vertical_margin_large">24dp</dimen>
+    <dimen name="vertical_margin_small">10dp</dimen>
+    <dimen name="settings_ripple_effect_radius">4dp</dimen>
+</resources>
