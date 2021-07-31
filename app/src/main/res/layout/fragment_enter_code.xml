@@ -48,10 +48,10 @@
     <EditText
         android:id="@+id/register_sms_code"
         style="@style/editText"
+        android:background="@color/grey_light"
+        android:ems="6"
         android:gravity="center"
         android:hint="@string/registerHint_numberPhone"
-        android:ems="6"
-        android:background="@color/grey_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/register_text_sms"

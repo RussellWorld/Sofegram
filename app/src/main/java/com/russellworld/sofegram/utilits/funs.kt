@@ -17,13 +17,13 @@ fun AppCompatActivity.replaceActivity(activity: AppCompatActivity) {
 }
 
 fun AppCompatActivity.replaceFragment(fragment: Fragment, addStack: Boolean = true) {
-    if (addStack){
+    if (addStack) {
         supportFragmentManager.beginTransaction()
             .addToBackStack(null)
             .replace(
                 R.id.dataContainer, fragment
             ).commit()
-    }else{
+    } else {
         supportFragmentManager.beginTransaction()
             .replace(
                 R.id.dataContainer, fragment

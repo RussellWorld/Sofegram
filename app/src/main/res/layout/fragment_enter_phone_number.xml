@@ -23,12 +23,11 @@
     <EditText
         android:id="@+id/register_input_numberPhone"
         style="@style/editText"
+        android:background="@color/grey_light"
+        android:ems="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:ems="10"
-        android:background="@color/grey_light"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

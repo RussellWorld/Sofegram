@@ -23,4 +23,5 @@
     <string name="registr_toast_enter">Введите номер телефона</string>
     <string name="fab_discr">FAB</string>
     <string name="enter_fragment_hello">Добро пожаловать</string>
+    <string name="settings_input_name_text">Имя</string>
 </resources>

@@ -22,7 +22,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.settings_menu_exit -> {
                 AUTH.signOut()
                 (activity as MainActivity).replaceActivity(RegisterActivity())

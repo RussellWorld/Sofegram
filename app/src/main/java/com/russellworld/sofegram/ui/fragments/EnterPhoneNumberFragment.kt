@@ -6,9 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseException
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.russellworld.sofegram.MainActivity
 import com.russellworld.sofegram.R
@@ -53,7 +51,7 @@ class EnterPhoneNumberFragment : Fragment() {
             }
 
             override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
-                replaceFragment(EnterCodeFragment(mPhoneNumber,id))
+                replaceFragment(EnterCodeFragment(mPhoneNumber, id))
             }
         }
 

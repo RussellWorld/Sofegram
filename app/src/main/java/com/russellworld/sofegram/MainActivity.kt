@@ -1,6 +1,5 @@
 package com.russellworld.sofegram
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -8,11 +7,10 @@ import com.russellworld.sofegram.activities.RegisterActivity
 import com.russellworld.sofegram.databinding.ActivityMainBinding
 import com.russellworld.sofegram.ui.fragments.ChatsFragment
 import com.russellworld.sofegram.ui.objects.AppDrawer
-import com.russellworld.sofegram.utilits.replaceActivity
-import com.russellworld.sofegram.utilits.replaceFragment
-import com.google.firebase.auth.FirebaseAuth
 import com.russellworld.sofegram.utilits.AUTH
 import com.russellworld.sofegram.utilits.initFirebase
+import com.russellworld.sofegram.utilits.replaceActivity
+import com.russellworld.sofegram.utilits.replaceFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         initFields()
-        initFun()
+        initFunc()
     }
 
     private fun initFields() {
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         initFirebase()
     }
 
-    private fun initFun() {
+    private fun initFunc() {
         if (AUTH.currentUser != null) {
             setSupportActionBar(mToolBar)
             mAppDrawer.create()
