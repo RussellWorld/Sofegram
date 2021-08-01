@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.russellworld.sofegram.activities.RegisterActivity
 import com.russellworld.sofegram.databinding.ActivityMainBinding
+import com.russellworld.sofegram.models.User
 import com.russellworld.sofegram.ui.fragments.ChatsFragment
 import com.russellworld.sofegram.ui.objects.AppDrawer
-import com.russellworld.sofegram.utilits.AUTH
-import com.russellworld.sofegram.utilits.initFirebase
-import com.russellworld.sofegram.utilits.replaceActivity
-import com.russellworld.sofegram.utilits.replaceFragment
+import com.russellworld.sofegram.utilits.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +33,14 @@ class MainActivity : AppCompatActivity() {
         mToolBar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolBar)
         initFirebase()
+        initUser()
+    }
+
+    private fun initUser() {
+        REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+            .addListenerForSingleValueEvent(AppValueEventListener {
+                USER = it.getValue(User::class.java) ?: User()
+            })
     }
 
     private fun initFunc() {
