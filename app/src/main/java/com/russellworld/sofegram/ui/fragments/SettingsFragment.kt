@@ -8,6 +8,7 @@ import com.russellworld.sofegram.R
 import com.russellworld.sofegram.activities.RegisterActivity
 import com.russellworld.sofegram.utilits.AUTH
 import com.russellworld.sofegram.utilits.replaceActivity
+import com.russellworld.sofegram.utilits.replaceFragment
 
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
@@ -27,6 +28,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                 AUTH.signOut()
                 (activity as MainActivity).replaceActivity(RegisterActivity())
             }
+            R.id.settings_menu_change_name -> replaceFragment(ChangeNameFragment())
         }
         return true
     }

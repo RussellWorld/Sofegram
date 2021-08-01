@@ -24,4 +24,7 @@
     <string name="fab_discr">FAB</string>
     <string name="enter_fragment_hello">Добро пожаловать</string>
     <string name="settings_input_name_text">Имя</string>
+    <string name="settings_hint_input_surname_text">Фамилия</string>
+    <string name="settings_toast_name_is_empty">Имя не может быть пустым</string>
+    <string name="toast_data_update">Данные обновлены</string>
 </resources>
