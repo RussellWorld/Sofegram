@@ -9,7 +9,7 @@ import com.russellworld.sofegram.R
 import com.russellworld.sofegram.utilits.*
 
 
-class ChangeNameFragment : Fragment(R.layout.fragment_change_name) {
+class ChangeNameFragment : BaseFragment(R.layout.fragment_change_name) {
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)

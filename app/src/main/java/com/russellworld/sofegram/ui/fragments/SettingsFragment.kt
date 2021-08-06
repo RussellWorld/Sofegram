@@ -7,6 +7,7 @@ import com.russellworld.sofegram.MainActivity
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.activities.RegisterActivity
 import com.russellworld.sofegram.utilits.AUTH
+import com.russellworld.sofegram.utilits.USER
 import com.russellworld.sofegram.utilits.replaceActivity
 import com.russellworld.sofegram.utilits.replaceFragment
 
@@ -16,6 +17,15 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        initFields()
+    }
+
+    private fun initFields() {
+        settings_bio.text = USER.bio
+        settings_full_name.text = USER.fullname
+        settings_phone_number.text = USER.phone
+        settings_status.text = USER.status
+        settings_username.text = USER.username
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
