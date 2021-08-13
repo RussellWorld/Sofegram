@@ -2,6 +2,7 @@ package com.russellworld.sofegram.ui.fragments
 
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.utilits.*
+import kotlinx.android.synthetic.main.fragment_change_user_name.*
 
 
 class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_name) {

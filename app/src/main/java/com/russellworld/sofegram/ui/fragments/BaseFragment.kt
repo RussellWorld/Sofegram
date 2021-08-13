@@ -23,13 +23,13 @@ open class BaseFragment(val layout: Int) : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        (APP_ACTIVITY).mAppDrawer.disableDrawer()
+        APP_ACTIVITY.mAppDrawer.disableDrawer()
 
     }
 
     override fun onStop() {
         super.onStop()
-        (APP_ACTIVITY).mAppDrawer.enableDrawer()
+        APP_ACTIVITY.mAppDrawer.enableDrawer()
     }
 
 }

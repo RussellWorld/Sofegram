@@ -2,6 +2,7 @@ package com.russellworld.sofegram.ui.fragments
 
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.utilits.*
+import kotlinx.android.synthetic.main.fragment_change_name.*
 
 
 class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
@@ -15,7 +16,7 @@ class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
         if (fullnameList.size > 1) {
             settings_input_name.setText(fullnameList[0])
             settings_input_surname.setText(fullnameList[1])
-        } else setting_input_name.setText(fullnameList[0])
+        } else settings_input_name.setText(fullnameList[0])
     }
 
 

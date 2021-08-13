@@ -2,6 +2,7 @@ package com.russellworld.sofegram.ui.fragments
 
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.utilits.*
+import kotlinx.android.synthetic.main.fragment_change_bio.*
 
 
 class ChangeBioFragment : BaseChangeFragment(R.layout.fragment_change_bio) {
@@ -11,10 +12,6 @@ class ChangeBioFragment : BaseChangeFragment(R.layout.fragment_change_bio) {
         settings_input_bio.setText(USER.bio)
     }
 
-    override fun onStop() {
-        super.onStop()
-        APP_ACTIVITY.hideKeyboard()
-    }
 
     override fun change() {
         super.change()
