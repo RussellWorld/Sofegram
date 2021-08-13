@@ -6,6 +6,6 @@ data class User(
     var bio: String = "",
     var fullname: String = "",
     val status: String = "",
-    val photoUrl: String = "",
+    var photoUrl: String = "",
     val phone: String = ""
 )
