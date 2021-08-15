@@ -36,7 +36,6 @@ class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
                         fragmentManager?.popBackStack()
                     }
                 }
-
         }
     }
 
