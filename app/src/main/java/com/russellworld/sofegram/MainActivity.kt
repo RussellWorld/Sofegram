@@ -10,6 +10,9 @@ import com.russellworld.sofegram.databinding.ActivityMainBinding
 import com.russellworld.sofegram.ui.fragments.ChatsFragment
 import com.russellworld.sofegram.ui.objects.AppDrawer
 import com.russellworld.sofegram.utilits.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,7 +28,9 @@ class MainActivity : AppCompatActivity() {
         APP_ACTIVITY = this
         initFirebase()
         initUser {
-            initContacts()
+            CoroutineScope(Dispatchers.IO).launch {
+                initContacts()
+            }
             initFields()
             initFunc()
         }
