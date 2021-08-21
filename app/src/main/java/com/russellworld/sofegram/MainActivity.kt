@@ -36,12 +36,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initContacts() {
-        if (checkPermission(READ_CONTACTS)) {
-            showToast("Чтение контактов")
-        }
-    }
-
     private fun initFields() {
         mToolBar = mBinding.mainToolbar
         mAppDrawer = AppDrawer(this, mToolBar)
