@@ -6,10 +6,12 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/drawable/header.xml" value="0.1165" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/contact_item.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/fragment_change_bio.xml" value="0.19814814814814816" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/fragment_change_name.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/fragment_change_user_name.xml" value="0.2037037037037037" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/fragment_chats.xml" value="0.264" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/fragment_contacts.xml" value="0.19814814814814816" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/fragment_enter_code.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/fragment_enter_phone_number.xml" value="0.264" />
         <entry key="..\:/Users/User/AndroidStudioProjects/Sofegram/app/src/main/res/layout/fragment_settings.xml" value="0.264" />
