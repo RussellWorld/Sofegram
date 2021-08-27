@@ -1,5 +1,7 @@
 package com.russellworld.sofegram.models
 
+/* Модель для User*/
+
 data class User(
     val id: String = "",
     var username: String = "",

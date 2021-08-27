@@ -5,9 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.russellworld.sofegram.MainActivity
 import com.russellworld.sofegram.utilits.APP_ACTIVITY
 
+/* Базовый фрагмент, от него наследуются все фрагменты приложения, кроме главного */
 
 open class BaseFragment(val layout: Int) : Fragment() {
     private lateinit var mRootView: View

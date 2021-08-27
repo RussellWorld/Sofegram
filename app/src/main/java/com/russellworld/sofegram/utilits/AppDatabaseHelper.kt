@@ -12,6 +12,8 @@ import com.google.firebase.storage.StorageReference
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.User
 
+/* Файл содержит все необходимые инструменты для работы с базой данных */
+
 lateinit var AUTH: FirebaseAuth
 lateinit var CURRENT_UID: String
 lateinit var REF_DATABASE_ROOT: DatabaseReference
@@ -33,6 +35,8 @@ const val CHILD_PHOTO_URL = "photoUrl"
 const val CHILD_STATE = "state"
 
 fun initFirebase() {
+    /* Инициализация базы данных Firebase */
+
     AUTH = FirebaseAuth.getInstance()
     REF_DATABASE_ROOT = FirebaseDatabase.getInstance().reference
     USER = User()
@@ -41,6 +45,7 @@ fun initFirebase() {
 }
 
 inline fun putUrlToDataBase(url: String, crossinline function: () -> Unit) {
+    /* Функция высшего порядка, отпраляет полученый URL в базу данных */
     REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
         .child(CHILD_PHOTO_URL).setValue(url)
         .addOnSuccessListener { function() }
@@ -48,6 +53,7 @@ inline fun putUrlToDataBase(url: String, crossinline function: () -> Unit) {
 }
 
 inline fun getUrlFromStorage(path: StorageReference, crossinline function: (url: String) -> Unit) {
+    /* Функция высшего порядка, получает  URL картинки из хранилища */
     path.downloadUrl
         .addOnSuccessListener { function(it.toString()) }
         .addOnFailureListener { showToast(it.message.toString()) }
@@ -55,12 +61,14 @@ inline fun getUrlFromStorage(path: StorageReference, crossinline function: (url:
 
 
 inline fun putImageToStorage(uri: Uri, path: StorageReference, crossinline function: () -> Unit) {
+    /* Функция высшего порядка, отправляет картинку в хранилище */
     path.putFile(uri)
         .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
 }
 
 inline fun initUser(crossinline function: () -> Unit) {
+    /* Функция высшего порядка, инициализация текущей модели USER */
     REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
         .addListenerForSingleValueEvent(AppValueEventListener {
             USER = it.getValue(User::class.java) ?: User()
@@ -73,6 +81,7 @@ inline fun initUser(crossinline function: () -> Unit) {
 
 @SuppressLint("Range")
 fun initContacts() {
+    /* Функция считывает контакты с телефонной книги, zаполняет массив arrayContacts моделями CommonModel */
     if (checkPermission(READ_CONTACTS)) {
         val arrayContacts = arrayListOf<CommonModel>()
         val cursor = APP_ACTIVITY.contentResolver.query(
@@ -84,6 +93,7 @@ fun initContacts() {
         )
         cursor?.let {
             while (it.moveToNext()) {
+                /* Читаем телефонную книгу пока есть следующие элементы */
                 val fullName = it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
                 val phone = it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
                 val newModel = CommonModel()
@@ -98,6 +108,7 @@ fun initContacts() {
 }
 
 fun updatePhonesToDatabase(arrayContacts: ArrayList<CommonModel>) {
+    // Функция добавляет номер телефона с id в базу данных.
     REF_DATABASE_ROOT.child(NODE_PHONES).addListenerForSingleValueEvent(AppValueEventListener {
         it.children.forEach { snapshot ->
             arrayContacts.forEach { contact ->
@@ -112,5 +123,6 @@ fun updatePhonesToDatabase(arrayContacts: ArrayList<CommonModel>) {
     })
 }
 
+// Функция преобразовывает полученые данные из Firebase в модель CommonModel
 fun DataSnapshot.getCommonModel(): CommonModel =
     this.getValue(CommonModel::class.java) ?: CommonModel()

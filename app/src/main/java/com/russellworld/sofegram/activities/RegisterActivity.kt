@@ -9,6 +9,8 @@ import com.russellworld.sofegram.ui.fragments.EnterPhoneNumberFragment
 import com.russellworld.sofegram.utilits.initFirebase
 import com.russellworld.sofegram.utilits.replaceFragment
 
+/* Активность для регистрации нового пользователя*/
+
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityRegisterBinding

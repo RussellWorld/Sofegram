@@ -14,6 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/* Главная активность*/
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var mAppDrawer: AppDrawer
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        /* Функция запускается один раз, при создании активити */
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
@@ -37,12 +39,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFields() {
+        /* Функция инициализирует переменные */
         mToolBar = mBinding.mainToolbar
         mAppDrawer = AppDrawer()
 
     }
 
     private fun initFunc() {
+        /* Функция инициализирует функциональность приложения */
         if (AUTH.currentUser != null) {
             setSupportActionBar(mToolBar)
             mAppDrawer.create()

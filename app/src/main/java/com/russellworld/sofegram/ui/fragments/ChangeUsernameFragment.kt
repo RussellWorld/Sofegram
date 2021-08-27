@@ -4,8 +4,9 @@ import com.russellworld.sofegram.R
 import com.russellworld.sofegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_change_user_name.*
 
+/* Фрагмент для изменения username пользователя */
 
-class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_name) {
+class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_user_name) {
     lateinit var mNewUsername: String
 
     override fun onResume() {
@@ -32,6 +33,7 @@ class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_
     }
 
     private fun changeUsername() {
+        /* Изменение username в базе данных */
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(CURRENT_UID).setValue(CURRENT_UID)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -41,6 +43,7 @@ class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_
     }
 
     private fun updateCurrentUsername() {
+        /* Обновление username в базе данных у текущего пользователя */
         REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME).setValue(mNewUsername)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -53,6 +56,7 @@ class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_
     }
 
     private fun deleteOldUsername() {
+        /* Удаление старого username из базы данных  */
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
             .addOnCompleteListener {
                 if (it.isSuccessful) {

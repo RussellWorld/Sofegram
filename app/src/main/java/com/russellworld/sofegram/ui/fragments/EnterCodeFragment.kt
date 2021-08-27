@@ -11,7 +11,7 @@ import com.russellworld.sofegram.activities.RegisterActivity
 import com.russellworld.sofegram.databinding.FragmentEnterCodeBinding
 import com.russellworld.sofegram.utilits.*
 
-
+/* Фрагмент для ввода кода подтверждения при регистрации */
 class EnterCodeFragment(val phoneNumber: String, val id: String) : Fragment() {
 
     private lateinit var binding: FragmentEnterCodeBinding
@@ -38,6 +38,7 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) : Fragment() {
     }
 
     private fun enterCode() {
+        /* Функция проверяет код, если все нормально, производит создания информации о пользователе в базе данных.*/
         val code = binding.registerSmsCode.text.toString()
         val credential = PhoneAuthProvider.getCredential(id, code)
         AUTH.signInWithCredential(credential).addOnCompleteListener { task ->

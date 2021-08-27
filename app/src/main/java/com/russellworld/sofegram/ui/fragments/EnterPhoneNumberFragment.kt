@@ -18,6 +18,8 @@ import com.russellworld.sofegram.utilits.replaceFragment
 import com.russellworld.sofegram.utilits.showToast
 import java.util.concurrent.TimeUnit
 
+/* Фрагмент для ввода номера телефона при регистрации */
+
 class EnterPhoneNumberFragment : Fragment() {
 
     private lateinit var binding: FragmentEnterPhoneNumberBinding
@@ -35,8 +37,11 @@ class EnterPhoneNumberFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        /* Callback который возвращает результат верификации */
         mCallback = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                /* Функция срабатывает если верификация уже была произведена,
+                * пользователь авторизируется в приложении без потверждения по смс */
                 AUTH.signInWithCredential(credential).addOnCompleteListener {
                     if (it.isSuccessful) {
                         showToast(getString(R.string.enter_fragment_hello))
@@ -47,10 +52,12 @@ class EnterPhoneNumberFragment : Fragment() {
 
 
             override fun onVerificationFailed(p0: FirebaseException) {
+                /* Функция срабатывает если верификация не удалась*/
                 showToast(p0.message.toString())
             }
 
             override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
+                /* Функция срабатывает если верификация впервые, и отправлена смс */
                 replaceFragment(EnterCodeFragment(mPhoneNumber, id))
             }
         }
@@ -59,6 +66,8 @@ class EnterPhoneNumberFragment : Fragment() {
     }
 
     private fun sendCode() {
+        /* Функция проверяет поле для ввода номер телефона, если поле пустое выводит сообщение.
+        * Если поле не пустое, то начинает процедуру авторизации/ регистрации */
         if (binding.registerInputNumberPhone.text.toString().isEmpty()) {
             showToast(getString(R.string.registr_toast_enter))
 
@@ -68,6 +77,7 @@ class EnterPhoneNumberFragment : Fragment() {
     }
 
     private fun authUser() {
+        /* Инициализация */
         mPhoneNumber = binding.registerInputNumberPhone.text.toString()
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -77,14 +87,5 @@ class EnterPhoneNumberFragment : Fragment() {
             activity as RegisterActivity,
             mCallback
         )
-//        PhoneAuthProvider.verifyPhoneNumber(
-//            PhoneAuthOptions
-//                .newBuilder(FirebaseAuth.getInstance())
-//                .setActivity(activity as RegisterActivity)
-//                .setPhoneNumber(mPhoneNumber)
-//                .setTimeout(60L, TimeUnit.SECONDS)
-//                .setCallbacks(mCallback)
-//                .build()
-//        )
     }
 }
