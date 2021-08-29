@@ -10,7 +10,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.russellworld.sofegram.models.CommonModel
-import com.russellworld.sofegram.models.User
+import com.russellworld.sofegram.models.UserModel
 
 /* Файл содержит все необходимые инструменты для работы с базой данных */
 
@@ -18,7 +18,7 @@ lateinit var AUTH: FirebaseAuth
 lateinit var CURRENT_UID: String
 lateinit var REF_DATABASE_ROOT: DatabaseReference
 lateinit var REF_STORAGE_ROOT: StorageReference
-lateinit var USER: User
+lateinit var USER: UserModel
 
 const val NODE_USERS = "users"
 const val NODE_USERNAMES = "usernames"
@@ -39,7 +39,7 @@ fun initFirebase() {
 
     AUTH = FirebaseAuth.getInstance()
     REF_DATABASE_ROOT = FirebaseDatabase.getInstance().reference
-    USER = User()
+    USER = UserModel()
     CURRENT_UID = AUTH.currentUser?.uid.toString()
     REF_STORAGE_ROOT = FirebaseStorage.getInstance().reference
 }
@@ -71,7 +71,7 @@ inline fun initUser(crossinline function: () -> Unit) {
     /* Функция высшего порядка, инициализация текущей модели USER */
     REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
         .addListenerForSingleValueEvent(AppValueEventListener {
-            USER = it.getValue(User::class.java) ?: User()
+            USER = it.getValue(UserModel::class.java) ?: UserModel()
             if (USER.username.isEmpty()) {
                 USER.username = CURRENT_UID
             }
@@ -126,3 +126,6 @@ fun updatePhonesToDatabase(arrayContacts: ArrayList<CommonModel>) {
 // Функция преобразовывает полученые данные из Firebase в модель CommonModel
 fun DataSnapshot.getCommonModel(): CommonModel =
     this.getValue(CommonModel::class.java) ?: CommonModel()
+
+fun DataSnapshot.getUserModel(): UserModel =
+    this.getValue(UserModel::class.java) ?: UserModel()
