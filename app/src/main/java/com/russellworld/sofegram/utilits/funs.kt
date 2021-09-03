@@ -1,13 +1,16 @@
 package com.russellworld.sofegram.utilits
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.provider.ContactsContract
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.russellworld.sofegram.R
+import com.russellworld.sofegram.models.CommonModel
 import com.squareup.picasso.Picasso
 
 /* Файл для хранения утилитарных функции, доступных во всем приложении */
@@ -63,4 +66,32 @@ fun ImageView.downloadAndSetImage(url: String) {
         .fit()
         .placeholder(R.drawable.default_user)
         .into(this)
+}
+
+@SuppressLint("Range")
+fun initContacts() {
+    /* Функция считывает контакты с телефонной книги, zаполняет массив arrayContacts моделями CommonModel */
+    if (checkPermission(READ_CONTACTS)) {
+        val arrayContacts = arrayListOf<CommonModel>()
+        val cursor = APP_ACTIVITY.contentResolver.query(
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+        )
+        cursor?.let {
+            while (it.moveToNext()) {
+                /* Читаем телефонную книгу пока есть следующие элементы */
+                val fullName = it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                val phone = it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                val newModel = CommonModel()
+                newModel.fullname = fullName
+                newModel.phone = phone.replace(Regex("[\\s,-]"), "")
+                arrayContacts.add(newModel)
+            }
+        }
+        cursor?.close()
+        updatePhonesToDatabase(arrayContacts)
+    }
 }
