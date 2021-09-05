@@ -10,6 +10,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.models.CommonModel
+import com.russellworld.sofegram.ui.fragments.singl_chat.SingleChatFragment
 import com.russellworld.sofegram.utilits.*
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.contact_item.view.*

@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.models.CommonModel
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.*
 
 /* Файл для хранения утилитарных функции, доступных во всем приложении */
 
@@ -94,4 +96,10 @@ fun initContacts() {
         cursor?.close()
         updatePhonesToDatabase(arrayContacts)
     }
+}
+
+fun String.asTime(): String {
+    val time = Date(this.toLong())
+    val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    return timeFormat.format(time)
 }
