@@ -29,7 +29,6 @@ class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_user_
                     }
                 })
         }
-
     }
 
     private fun changeUsername() {
@@ -37,35 +36,9 @@ class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_user_
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(CURRENT_UID).setValue(CURRENT_UID)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    updateCurrentUsername()
+                    updateCurrentUsername(mNewUsername)
                 }
             }
     }
 
-    private fun updateCurrentUsername() {
-        /* Обновление username в базе данных у текущего пользователя */
-        REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME).setValue(mNewUsername)
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    showToast(getString(R.string.toast_data_update))
-                    deleteOldUsername()
-                } else {
-                    showToast(it.exception?.message.toString())
-                }
-            }
-    }
-
-    private fun deleteOldUsername() {
-        /* Удаление старого username из базы данных  */
-        REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    showToast(getString(R.string.toast_data_update))
-                    fragmentManager?.popBackStack()
-                    USER.username = mNewUsername
-                } else {
-                    showToast(it.exception?.message.toString())
-                }
-            }
-    }
 }

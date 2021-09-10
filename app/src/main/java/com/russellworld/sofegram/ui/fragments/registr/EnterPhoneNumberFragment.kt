@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments
+package com.russellworld.sofegram.ui.fragments.registr
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,8 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.russellworld.sofegram.MainActivity
 import com.russellworld.sofegram.R
-import com.russellworld.sofegram.activities.RegisterActivity
 import com.russellworld.sofegram.databinding.FragmentEnterPhoneNumberBinding
-import com.russellworld.sofegram.utilits.AUTH
-import com.russellworld.sofegram.utilits.replaceActivity
-import com.russellworld.sofegram.utilits.replaceFragment
-import com.russellworld.sofegram.utilits.showToast
+import com.russellworld.sofegram.utilits.*
 import java.util.concurrent.TimeUnit
 
 /* Фрагмент для ввода номера телефона при регистрации */
@@ -45,7 +41,7 @@ class EnterPhoneNumberFragment : Fragment() {
                 AUTH.signInWithCredential(credential).addOnCompleteListener {
                     if (it.isSuccessful) {
                         showToast(getString(R.string.enter_fragment_hello))
-                        (activity as RegisterActivity).replaceActivity(MainActivity())
+                       restartActivity()
                     } else showToast(it.exception?.message.toString())
                 }
             }
@@ -84,7 +80,7 @@ class EnterPhoneNumberFragment : Fragment() {
             mPhoneNumber,
             60,
             TimeUnit.SECONDS,
-            activity as RegisterActivity,
+            APP_ACTIVITY,
             mCallback
         )
     }

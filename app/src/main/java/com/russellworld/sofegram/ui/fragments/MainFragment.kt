@@ -6,11 +6,12 @@ import com.russellworld.sofegram.utilits.APP_ACTIVITY
 
 /* Главный фрагмент, содержит все чаты, группы и каналы с которыми взаимодействует пользователь*/
 
-class ChatsFragment : Fragment(R.layout.fragment_chats) {
+class MainFragment : Fragment(R.layout.fragment_chats) {
 
     override fun onResume() {
         super.onResume()
-        APP_ACTIVITY.title = "Чаты"
+        APP_ACTIVITY.title = "Sofegram"
+        APP_ACTIVITY.mAppDrawer.enableDrawer()
 
     }
 }

@@ -8,6 +8,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.russellworld.sofegram.R
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.UserModel
 
@@ -140,4 +141,46 @@ fun sendMessage(message: String, receivingUserID: String, typeText: String, func
         .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
 
+}
+
+fun updateCurrentUsername(newUsername: String) {
+    /* Обновление username в базе данных у текущего пользователя */
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME).setValue(newUsername)
+        .addOnSuccessListener {
+            showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
+            deleteOldUsername(newUsername)
+        }.addOnFailureListener { showToast(it.message.toString()) }
+}
+
+
+fun deleteOldUsername(newUsername: String) {
+    /* Удаление старого username из базы данных  */
+    REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
+        .addOnSuccessListener {
+            showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
+            USER.username = newUsername
+        }.addOnFailureListener { showToast(it.message.toString()) }
+}
+
+
+fun setBioToDatabase(newBio: String) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_BIO)
+        .setValue(newBio)
+        .addOnSuccessListener {
+            showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
+            USER.bio = newBio
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
+        }.addOnFailureListener { showToast(it.message.toString()) }
+}
+
+fun setNameToDatabase(fullname: String) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_FULLNAME)
+        .setValue(fullname)
+        .addOnSuccessListener {
+            showToast(APP_ACTIVITY.getString(R.string.toast_data_update))
+            USER.fullname = fullname
+            APP_ACTIVITY.mAppDrawer.updateHeader()
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
+        }.addOnFailureListener { showToast(it.message.toString()) }
 }

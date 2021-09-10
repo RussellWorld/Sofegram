@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.russellworld.sofegram.activities.RegisterActivity
 import com.russellworld.sofegram.databinding.ActivityMainBinding
-import com.russellworld.sofegram.ui.fragments.ChatsFragment
+import com.russellworld.sofegram.ui.fragments.MainFragment
+import com.russellworld.sofegram.ui.fragments.registr.EnterPhoneNumberFragment
 import com.russellworld.sofegram.ui.objects.AppDrawer
 import com.russellworld.sofegram.utilits.*
 import kotlinx.coroutines.CoroutineScope
@@ -47,12 +47,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFunc() {
         /* Функция инициализирует функциональность приложения */
+        setSupportActionBar(mToolBar)
         if (AUTH.currentUser != null) {
-            setSupportActionBar(mToolBar)
             mAppDrawer.create()
-            replaceFragment(ChatsFragment(), false)
+            replaceFragment(MainFragment(), false)
         } else {
-            replaceActivity(RegisterActivity())
+            replaceFragment(EnterPhoneNumberFragment(), false)
         }
     }
 
