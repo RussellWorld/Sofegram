@@ -10,13 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.utilits.CURRENT_UID
-import com.russellworld.sofegram.utilits.DiffUtilCallback
 import com.russellworld.sofegram.utilits.asTime
 import kotlinx.android.synthetic.main.message_item.view.*
 
 class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
 
-    var mListMessageCache = emptyList<CommonModel>()
+    var mListMessageCache = mutableListOf<CommonModel>()
     private lateinit var mDiffResult: DiffUtil.DiffResult
 
     class SingleChatHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -54,20 +53,23 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
 
     override fun getItemCount(): Int = mListMessageCache.size
 
-    fun setList(list: List<CommonModel>) {
 
-    }
-
-    fun addItem(item: CommonModel) {
-        val newList = mutableListOf<CommonModel>()
-        newList.addAll(mListMessageCache)
-
-        if (!newList.contains(item)) newList.add(item)
-
-        newList.sortBy { it.timeStamp.toString() }
-        mDiffResult = DiffUtil.calculateDiff(DiffUtilCallback(mListMessageCache, newList))
-        mDiffResult.dispatchUpdatesTo(this)
-        mListMessageCache = newList
+    fun addItem(
+        item: CommonModel,
+        toBottom: Boolean,
+        onSuccess: () -> Unit
+    ) {
+        if (toBottom) {
+            if (!mListMessageCache.contains(item)) {
+                mListMessageCache.add(item)
+                notifyItemInserted(mListMessageCache.size)
+            }
+        } else if (!mListMessageCache.contains(item)) {
+            mListMessageCache.add(item)
+            mListMessageCache.sortBy { it.timeStamp.toString() }
+            notifyItemInserted(mListMessageCache.size)
+        }
+        onSuccess()
     }
 }
 
