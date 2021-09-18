@@ -14,9 +14,7 @@ import com.russellworld.sofegram.models.UserModel
 import com.russellworld.sofegram.ui.fragments.BaseFragment
 import com.russellworld.sofegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
-import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.fragment_settings.*
 import kotlinx.android.synthetic.main.fragment_single_chat.*
 import kotlinx.android.synthetic.main.toolbar_info.view.*
 
@@ -175,7 +173,8 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
 
             putImageToStorage(uri, path) {
                 getUrlFromStorage(path) {
-sendMessageAsImage(contact.id, it, messageKey)
+                    sendMessageAsImage(contact.id, it, messageKey)
+                    mSmoothScrollPosition = true
                 }
             }
         }
