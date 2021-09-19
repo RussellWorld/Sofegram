@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
-import com.russellworld.sofegram.MainActivity
 import com.russellworld.sofegram.R
+import com.russellworld.sofegram.database.AUTH
 import com.russellworld.sofegram.databinding.FragmentEnterPhoneNumberBinding
 import com.russellworld.sofegram.utilits.*
 import java.util.concurrent.TimeUnit

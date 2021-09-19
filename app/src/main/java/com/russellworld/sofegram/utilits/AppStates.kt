@@ -1,5 +1,7 @@
 package com.russellworld.sofegram.utilits
 
+import com.russellworld.sofegram.database.*
+
 /* Класс перечисление состояний приложения*/
 
 enum class AppStates(var state: String) {

@@ -19,7 +19,7 @@ import com.russellworld.sofegram.R
 import com.russellworld.sofegram.ui.fragments.ContactsFragment
 import com.russellworld.sofegram.ui.fragments.SettingsFragment
 import com.russellworld.sofegram.utilits.APP_ACTIVITY
-import com.russellworld.sofegram.utilits.USER
+import com.russellworld.sofegram.database.USER
 import com.russellworld.sofegram.utilits.downloadAndSetImage
 import com.russellworld.sofegram.utilits.replaceFragment
 

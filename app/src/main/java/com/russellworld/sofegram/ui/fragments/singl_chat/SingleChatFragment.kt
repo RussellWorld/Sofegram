@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.database.DatabaseReference
 import com.russellworld.sofegram.R
+import com.russellworld.sofegram.database.*
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.UserModel
 import com.russellworld.sofegram.ui.fragments.BaseFragment
@@ -84,7 +85,8 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
                         chat_input_message.setText("")
                         chat_btn_voice.colorFilter = null
                         mAppVoiceRecorder.stopRecord { file, messageKey ->
-                            uploadFileToStorage(Uri.fromFile(file), messageKey)
+                            uploadFileToStorage(Uri.fromFile(file), messageKey, contact.id, TYPE_MESSAGE_VOICE)
+                            mSmoothScrollPosition
                         }
                     }
                 }
@@ -198,17 +200,8 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
         ) {
             val uri = CropImage.getActivityResult(data).uri
             val messageKey = getMessageKey(contact.id)
-
-            val path = REF_STORAGE_ROOT
-                .child(FOLDER_MESSAGE_IMAGE)
-                .child(messageKey)
-
-            putImageToStorage(uri, path) {
-                getUrlFromStorage(path) {
-                    sendMessageAsImage(contact.id, it, messageKey)
-                    mSmoothScrollPosition = true
-                }
-            }
+            uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_IMAGE)
+            mSmoothScrollPosition
         }
     }
 

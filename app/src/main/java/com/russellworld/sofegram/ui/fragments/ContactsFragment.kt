@@ -9,6 +9,10 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.DatabaseReference
 import com.russellworld.sofegram.R
+import com.russellworld.sofegram.database.CURRENT_UID
+import com.russellworld.sofegram.database.NODE_PHONES_CONTACTS
+import com.russellworld.sofegram.database.NODE_USERS
+import com.russellworld.sofegram.database.REF_DATABASE_ROOT
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.ui.fragments.singl_chat.SingleChatFragment
 import com.russellworld.sofegram.utilits.*

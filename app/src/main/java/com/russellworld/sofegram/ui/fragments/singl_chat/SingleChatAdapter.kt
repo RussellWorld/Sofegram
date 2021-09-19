@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.russellworld.sofegram.R
+import com.russellworld.sofegram.database.CURRENT_UID
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.utilits.*
 import kotlinx.android.synthetic.main.message_item.view.*

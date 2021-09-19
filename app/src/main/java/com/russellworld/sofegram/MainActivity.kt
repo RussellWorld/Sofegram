@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import com.russellworld.sofegram.database.AUTH
 import com.russellworld.sofegram.databinding.ActivityMainBinding
 import com.russellworld.sofegram.ui.fragments.MainFragment
 import com.russellworld.sofegram.ui.fragments.registr.EnterPhoneNumberFragment
