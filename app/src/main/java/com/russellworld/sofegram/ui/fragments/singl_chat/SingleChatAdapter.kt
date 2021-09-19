@@ -74,7 +74,7 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
             holder.apply {
                 blockReceivedImageMessage.visibility = View.GONE
                 blockUserImageMessage.visibility = View.VISIBLE
-                chatUserImage.downloadAndSetImage(mListMessageCache[position].imageUrl)
+                chatUserImage.downloadAndSetImage(mListMessageCache[position].fileUrl)
                 chatUserImageMessageTime.text =
                     mListMessageCache[position].timeStamp.toString().asTime()
             }
@@ -82,7 +82,7 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
             holder.apply {
                 blockReceivedImageMessage.visibility = View.VISIBLE
                 blockUserImageMessage.visibility = View.GONE
-                chatReceivedImage.downloadAndSetImage(mListMessageCache[position].imageUrl)
+                chatReceivedImage.downloadAndSetImage(mListMessageCache[position].fileUrl)
                 chatReceivedImageMessageTime.text =
                     mListMessageCache[position].timeStamp.toString().asTime()
             }
