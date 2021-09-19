@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.PhoneAuthProvider
-import com.russellworld.sofegram.MainActivity
 import com.russellworld.sofegram.databinding.FragmentEnterCodeBinding
 import com.russellworld.sofegram.utilits.*
 
@@ -26,7 +25,7 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) : Fragment() {
 
     override fun onStart() {
         super.onStart()
-       APP_ACTIVITY.title = phoneNumber
+        APP_ACTIVITY.title = phoneNumber
         binding.registerSmsCode.addTextChangedListener(AppTextWatcher {
             val string = binding.registerSmsCode.text.toString()
             if (string.length == 6) {
@@ -48,18 +47,23 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) : Fragment() {
                 dateMap[CHILD_PHONE] = phoneNumber
                 dateMap[CHILD_USERNAME] = uid
 
-                REF_DATABASE_ROOT.child(NODE_PHONES).child(phoneNumber).setValue(uid)
-                    .addOnFailureListener { showToast(it.message.toString()) }
-                    .addOnSuccessListener {
-                        REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
-                            .addOnCompleteListener {
-                                showToast("Добро пожаловать")
-                                restartActivity()
-                            }
+                REF_DATABASE_ROOT.child(NODE_USERS).child(uid)
+                    .addListenerForSingleValueEvent(AppValueEventListener {
+                        if (!it.hasChild(CHILD_USERNAME)) {
+                            dateMap[CHILD_USERNAME] = uid
+                        }
+                        REF_DATABASE_ROOT.child(NODE_PHONES).child(phoneNumber).setValue(uid)
                             .addOnFailureListener { showToast(it.message.toString()) }
-                    }
+                            .addOnSuccessListener {
+                                REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
+                                    .addOnCompleteListener {
+                                        showToast("Добро пожаловать")
+                                        restartActivity()
+                                    }
+                                    .addOnFailureListener { showToast(it.message.toString()) }
+                            }
+                    })
             } else showToast(task.exception?.message.toString())
-
         }
     }
 }
