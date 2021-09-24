@@ -17,6 +17,7 @@ import com.russellworld.sofegram.database.*
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.UserModel
 import com.russellworld.sofegram.ui.fragments.BaseFragment
+import com.russellworld.sofegram.ui.fragments.message_recycle_view.views.AppViewFactory
 import com.russellworld.sofegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -119,11 +120,11 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
             val message = snapshot.getCommonModel()
 
             if (mSmoothScrollPosition) {
-                mAdapter.addItemToBottom(message) {
+                mAdapter.addItemToBottom(AppViewFactory.getView(message)) {
                     mRecyclerView.smoothScrollToPosition(mAdapter.itemCount)
                 }
             } else {
-                mAdapter.addItemToTop(message) {
+                mAdapter.addItemToTop(AppViewFactory.getView(message)) {
                     mSwipeRefreshLayout.isRefreshing = false
                 }
             }

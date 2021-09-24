@@ -1,0 +1,17 @@
+package com.russellworld.sofegram.ui.fragments.message_recycle_view.view_holders
+
+import android.view.View
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.message_item_text.view.*
+
+class HolderTextMessage(view: View): RecyclerView.ViewHolder(view) {
+
+    val blockUserMessage: ConstraintLayout = view.block_user_message
+    val chatUserMessage: TextView = view.chat_user_message
+    val chatUserMessageTime: TextView = view.chat_user__message_time
+    val blockReceivedMessage: ConstraintLayout = view.block_received_message
+    val chatReceivedMessage: TextView = view.chat_received_message
+    val chatReceivedMessageTime: TextView = view.chat_received__message_time
+}

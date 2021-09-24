@@ -1,75 +1,56 @@
 package com.russellworld.sofegram.ui.fragments.singl_chat
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.russellworld.sofegram.R
 import com.russellworld.sofegram.database.CURRENT_UID
-import com.russellworld.sofegram.models.CommonModel
-import com.russellworld.sofegram.utilits.*
-import kotlinx.android.synthetic.main.message_item.view.*
+import com.russellworld.sofegram.ui.fragments.message_recycle_view.view_holders.AppHolderFactory
+import com.russellworld.sofegram.ui.fragments.message_recycle_view.view_holders.HolderImageMessage
+import com.russellworld.sofegram.ui.fragments.message_recycle_view.view_holders.HolderTextMessage
+import com.russellworld.sofegram.ui.fragments.message_recycle_view.views.MessageView
+import com.russellworld.sofegram.utilits.asTime
+import com.russellworld.sofegram.utilits.downloadAndSetImage
 
-class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
+class SingleChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int = mListMessageCache.size
 
-    var mListMessageCache = mutableListOf<CommonModel>()
+    var mListMessageCache = mutableListOf<MessageView>()
 
-    class SingleChatHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //Text
-        val blockUserMessage: ConstraintLayout = view.block_user_message
-        val chatUserMessage: TextView = view.chat_user_message
-        val chatUserMessageTime: TextView = view.chat_user__message_time
-        val blockReceivedMessage: ConstraintLayout = view.block_received_message
-        val chatReceivedMessage: TextView = view.chat_received_message
-        val chatReceivedMessageTime: TextView = view.chat_received__message_time
-
-        //Image
-        val blockReceivedImageMessage: ConstraintLayout = view.block_received_image_message
-        val blockUserImageMessage: ConstraintLayout = view.block_user_image_message
-        val chatUserImage: ImageView = view.chat_user_image
-        val chatReceivedImage: ImageView = view.chat_received_image
-        val chatUserImageMessageTime: TextView = view.chat_user_image_message_time
-        val chatReceivedImageMessageTime: TextView = view.chat_received_image_message_time
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return AppHolderFactory.getHolder(parent, viewType)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SingleChatHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.message_item, parent, false)
-        return SingleChatHolder(view)
+    override fun getItemViewType(position: Int): Int {
+        return mListMessageCache[position].getTypeView()
     }
 
-    override fun onBindViewHolder(holder: SingleChatHolder, position: Int) {
-        when (mListMessageCache[position].type) {
-            TYPE_MESSAGE_TEXT -> drawMessageText(holder, position)
-            TYPE_MESSAGE_IMAGE -> drawMessageImage(holder, position)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is HolderImageMessage -> drawMessageImage(holder, position)
+            is HolderTextMessage -> drawMessageText(holder, position)
+            else -> {
+
+            }
         }
     }
 
-    private fun drawMessageText(holder: SingleChatHolder, position: Int) {
-        holder.blockUserMessage.visibility = View.GONE
-        holder.blockReceivedMessage.visibility = View.GONE
-
+    private fun drawMessageText(holder: HolderTextMessage, position: Int) {
         if (mListMessageCache[position].from == CURRENT_UID) {
             holder.blockUserMessage.visibility = View.VISIBLE
             holder.blockReceivedMessage.visibility = View.GONE
             holder.chatUserMessage.text = mListMessageCache[position].text
             holder.chatUserMessageTime.text =
-                mListMessageCache[position].timeStamp.toString().asTime()
+                mListMessageCache[position].timeStamp.asTime()
         } else {
             holder.blockUserMessage.visibility = View.GONE
             holder.blockReceivedMessage.visibility = View.VISIBLE
             holder.chatReceivedMessage.text = mListMessageCache[position].text
             holder.chatReceivedMessageTime.text =
-                mListMessageCache[position].timeStamp.toString().asTime()
+                mListMessageCache[position].timeStamp.asTime()
         }
     }
 
-    private fun drawMessageImage(holder: SingleChatHolder, position: Int) {
-        holder.blockUserMessage.visibility = View.GONE
-        holder.blockReceivedMessage.visibility = View.GONE
+    private fun drawMessageImage(holder: HolderImageMessage, position: Int) {
 
         if (mListMessageCache[position].from == CURRENT_UID) {
             holder.apply {
@@ -77,7 +58,7 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
                 blockUserImageMessage.visibility = View.VISIBLE
                 chatUserImage.downloadAndSetImage(mListMessageCache[position].fileUrl)
                 chatUserImageMessageTime.text =
-                    mListMessageCache[position].timeStamp.toString().asTime()
+                    mListMessageCache[position].timeStamp.asTime()
             }
         } else {
             holder.apply {
@@ -85,14 +66,14 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
                 blockUserImageMessage.visibility = View.GONE
                 chatReceivedImage.downloadAndSetImage(mListMessageCache[position].fileUrl)
                 chatReceivedImageMessageTime.text =
-                    mListMessageCache[position].timeStamp.toString().asTime()
+                    mListMessageCache[position].timeStamp.asTime()
             }
         }
     }
 
 
     fun addItemToBottom(
-        item: CommonModel,
+        item: MessageView,
         onSuccess: () -> Unit
     ) {
         if (!mListMessageCache.contains(item)) {
@@ -103,12 +84,12 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
     }
 
     fun addItemToTop(
-        item: CommonModel,
+        item: MessageView,
         onSuccess: () -> Unit
     ) {
         if (!mListMessageCache.contains(item)) {
             mListMessageCache.add(item)
-            mListMessageCache.sortBy { it.timeStamp.toString() }
+            mListMessageCache.sortBy { it.timeStamp }
             notifyItemInserted(mListMessageCache.size)
         }
         onSuccess()
