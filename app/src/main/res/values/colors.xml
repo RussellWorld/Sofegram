@@ -56,4 +56,5 @@
 
     <!--    Setting fragment -->
     <color name="settings_border_color"></color>
+    <color name="colorGreenDark">#0A850C</color>
 </resources>
