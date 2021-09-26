@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments
+package com.russellworld.sofegram.ui.screens
 
 import android.view.Menu
 import android.view.MenuInflater

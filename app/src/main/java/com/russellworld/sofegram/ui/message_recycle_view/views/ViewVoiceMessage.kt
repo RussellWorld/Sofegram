@@ -1,6 +1,6 @@
-package com.russellworld.sofegram.ui.fragments.message_recycle_view.views
+package com.russellworld.sofegram.ui.message_recycle_view.views
 
-data class ViewImageMessage(
+data class ViewVoiceMessage(
     override var id: String,
     override val from: String,
     override val timeStamp: String,
@@ -8,7 +8,7 @@ data class ViewImageMessage(
     override val text: String = ""
 ) : MessageView {
     override fun getTypeView(): Int {
-        return MessageView.MESSAGE_IMAGE
+        return MessageView.MESSAGE_VOICE
     }
 
     override fun equals(other: Any?): Boolean {

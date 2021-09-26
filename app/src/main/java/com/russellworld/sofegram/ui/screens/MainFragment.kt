@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments
+package com.russellworld.sofegram.ui.screens
 
 import androidx.fragment.app.Fragment
 import com.russellworld.sofegram.R

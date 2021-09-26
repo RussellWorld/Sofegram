@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments.message_recycle_view.views
+package com.russellworld.sofegram.ui.message_recycle_view.views
 
 class ViewTextMessage(
     override val id: String,

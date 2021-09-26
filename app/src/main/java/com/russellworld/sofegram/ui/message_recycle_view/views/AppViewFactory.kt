@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments.message_recycle_view.views
+package com.russellworld.sofegram.ui.message_recycle_view.views
 
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.utilits.TYPE_MESSAGE_IMAGE

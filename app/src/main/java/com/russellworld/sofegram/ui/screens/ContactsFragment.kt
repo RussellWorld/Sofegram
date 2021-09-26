@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments
+package com.russellworld.sofegram.ui.screens
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,7 @@ import com.russellworld.sofegram.database.NODE_PHONES_CONTACTS
 import com.russellworld.sofegram.database.NODE_USERS
 import com.russellworld.sofegram.database.REF_DATABASE_ROOT
 import com.russellworld.sofegram.models.CommonModel
-import com.russellworld.sofegram.ui.fragments.singl_chat.SingleChatFragment
+import com.russellworld.sofegram.ui.screens.singl_chat.SingleChatFragment
 import com.russellworld.sofegram.utilits.*
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.contact_item.view.*

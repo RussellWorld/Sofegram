@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments
+package com.russellworld.sofegram.ui.screens
 
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.database.CURRENT_UID

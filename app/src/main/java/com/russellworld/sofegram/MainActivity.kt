@@ -7,8 +7,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.russellworld.sofegram.database.AUTH
 import com.russellworld.sofegram.databinding.ActivityMainBinding
-import com.russellworld.sofegram.ui.fragments.MainFragment
-import com.russellworld.sofegram.ui.fragments.registr.EnterPhoneNumberFragment
+import com.russellworld.sofegram.ui.screens.MainFragment
+import com.russellworld.sofegram.ui.screens.registr.EnterPhoneNumberFragment
 import com.russellworld.sofegram.ui.objects.AppDrawer
 import com.russellworld.sofegram.utilits.*
 import kotlinx.coroutines.CoroutineScope

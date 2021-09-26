@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments.registr
+package com.russellworld.sofegram.ui.screens.registr
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -11,6 +11,7 @@ import com.russellworld.sofegram.R
 import com.russellworld.sofegram.database.*
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.UserModel
+import java.io.File
 
 /* Файл содержит все необходимые инструменты для работы с базой данных */
 
@@ -193,4 +194,11 @@ fun uploadFileToStorage(uri: Uri, messageKey: String, receivedID: String, typeMe
             sendMessageAsFile(receivedID, it, messageKey, typeMessage)
         }
     }
+}
+
+fun getFileFromStorage(mFile: File, fileUrl: String, function: () -> Unit) {
+    val path = REF_STORAGE_ROOT.storage.getReferenceFromUrl(fileUrl)
+    path.getFile(mFile)
+        .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
 }

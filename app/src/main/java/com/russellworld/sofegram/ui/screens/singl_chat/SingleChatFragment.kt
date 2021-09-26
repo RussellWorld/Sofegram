@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.fragments.singl_chat
+package com.russellworld.sofegram.ui.screens.singl_chat
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -16,8 +16,8 @@ import com.russellworld.sofegram.R
 import com.russellworld.sofegram.database.*
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.UserModel
-import com.russellworld.sofegram.ui.fragments.BaseFragment
-import com.russellworld.sofegram.ui.fragments.message_recycle_view.views.AppViewFactory
+import com.russellworld.sofegram.ui.screens.BaseFragment
+import com.russellworld.sofegram.ui.message_recycle_view.views.AppViewFactory
 import com.russellworld.sofegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -218,5 +218,6 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
     override fun onDestroy() {
         super.onDestroy()
         mAppVoiceRecorder.releaseRecord()
+        mAdapter.onDestroy()
     }
 }

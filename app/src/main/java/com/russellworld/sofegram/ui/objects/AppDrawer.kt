@@ -16,8 +16,8 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import com.russellworld.sofegram.R
-import com.russellworld.sofegram.ui.fragments.ContactsFragment
-import com.russellworld.sofegram.ui.fragments.SettingsFragment
+import com.russellworld.sofegram.ui.screens.ContactsFragment
+import com.russellworld.sofegram.ui.screens.SettingsFragment
 import com.russellworld.sofegram.utilits.APP_ACTIVITY
 import com.russellworld.sofegram.database.USER
 import com.russellworld.sofegram.utilits.downloadAndSetImage

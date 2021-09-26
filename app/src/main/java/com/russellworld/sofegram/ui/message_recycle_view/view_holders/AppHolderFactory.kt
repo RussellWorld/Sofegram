@@ -1,10 +1,10 @@
-package com.russellworld.sofegram.ui.fragments.message_recycle_view.view_holders
+package com.russellworld.sofegram.ui.message_recycle_view.view_holders
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.russellworld.sofegram.R
-import com.russellworld.sofegram.ui.fragments.message_recycle_view.views.MessageView
+import com.russellworld.sofegram.ui.message_recycle_view.views.MessageView
 
 class AppHolderFactory {
     companion object {
