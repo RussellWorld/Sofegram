@@ -1,6 +1,7 @@
 package com.russellworld.sofegram.ui.message_recycle_view.views
 
 import com.russellworld.sofegram.models.CommonModel
+import com.russellworld.sofegram.utilits.TYPE_MESSAGE_FILE
 import com.russellworld.sofegram.utilits.TYPE_MESSAGE_IMAGE
 import com.russellworld.sofegram.utilits.TYPE_MESSAGE_VOICE
 
@@ -20,6 +21,14 @@ class AppViewFactory {
                     message.from,
                     message.timeStamp.toString(),
                     message.fileUrl
+                )
+
+                TYPE_MESSAGE_FILE -> ViewVoiceMessage(
+                    message.id,
+                    message.from,
+                    message.timeStamp.toString(),
+                    message.fileUrl,
+                    message.text
                 )
 
                 else -> ViewTextMessage(

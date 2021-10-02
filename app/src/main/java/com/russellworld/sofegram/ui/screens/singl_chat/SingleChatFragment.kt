@@ -1,7 +1,6 @@
 package com.russellworld.sofegram.ui.screens.singl_chat
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.view.MotionEvent
@@ -213,8 +212,8 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         /* Активность которая запускается для получения картинки для фото пользователя */
         super.onActivityResult(requestCode, resultCode, data)
-        if (data != null){
-            when(requestCode) {
+        if (data != null) {
+            when (requestCode) {
                 CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
                     val uri = CropImage.getActivityResult(data).uri
                     val messageKey = getMessageKey(contact.id)
@@ -225,7 +224,8 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
                 PICK_FILE_REQUEST_CODE -> {
                     val uri = data.data
                     val messageKey = getMessageKey(contact.id)
-                    uri?.let { uploadFileToStorage(it, messageKey, contact.id, TYPE_MESSAGE_FILE) }
+                    val filename = getFilenameFromUri(uri!!)
+                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_FILE, filename)
                     mSmoothScrollPosition
                 }
             }
