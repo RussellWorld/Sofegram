@@ -83,7 +83,6 @@ fun updatePhonesToDatabase(arrayContacts: ArrayList<CommonModel>) {
             }
         })
     }
-
 }
 
 // Функция преобразовывает полученые данные из Firebase в модель CommonModel
@@ -160,8 +159,10 @@ fun setNameToDatabase(fullname: String) {
         }.addOnFailureListener { showToast(it.message.toString()) }
 }
 
-fun sendMessageAsFile(receivingUserID: String, fileUrl: String, messageKey: String,
-                      typeMessage: String, filename: String = "") {
+fun sendMessageAsFile(
+    receivingUserID: String, fileUrl: String, messageKey: String,
+    typeMessage: String, filename: String = ""
+) {
     val refDialogUser = "$NODE_MESSAGES/$CURRENT_UID/$receivingUserID"
     val refDialogReceivingUser = "$NODE_MESSAGES/$receivingUserID/$CURRENT_UID"
 
@@ -202,5 +203,27 @@ fun getFileFromStorage(mFile: File, fileUrl: String, function: () -> Unit) {
     val path = REF_STORAGE_ROOT.storage.getReferenceFromUrl(fileUrl)
     path.getFile(mFile)
         .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+
+fun saveToMainList(id: String, type: String) {
+    val refUser = "$NODE_MAIN_LIST/$CURRENT_UID/$id"
+    val refReceived = "$NODE_MAIN_LIST/$id/$CURRENT_UID"
+
+    val mapUser = hashMapOf<String, Any>()
+    val mapReceived = hashMapOf<String, Any>()
+
+    mapUser[CHILD_ID] = id
+    mapUser[CHILD_TYPE] = type
+
+    mapReceived[CHILD_ID] = CURRENT_UID
+    mapReceived[CHILD_TYPE] = type
+
+    val commonMap = hashMapOf<String, Any>()
+    commonMap[refUser] = mapUser
+    commonMap[refReceived] = mapReceived
+
+    REF_DATABASE_ROOT.updateChildren(commonMap)
         .addOnFailureListener { showToast(it.message.toString()) }
 }
