@@ -7,7 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.russellworld.sofegram.database.AUTH
 import com.russellworld.sofegram.databinding.ActivityMainBinding
-import com.russellworld.sofegram.ui.screens.MainFragment
+import com.russellworld.sofegram.ui.screens.main_list.MainListFragment
 import com.russellworld.sofegram.ui.screens.registr.EnterPhoneNumberFragment
 import com.russellworld.sofegram.ui.objects.AppDrawer
 import com.russellworld.sofegram.utilits.*
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mToolBar)
         if (AUTH.currentUser != null) {
             mAppDrawer.create()
-            replaceFragment(MainFragment(), false)
+            replaceFragment(MainListFragment(), false)
         } else {
             replaceFragment(EnterPhoneNumberFragment(), false)
         }
