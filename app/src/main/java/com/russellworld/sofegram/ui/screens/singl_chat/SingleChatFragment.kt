@@ -3,8 +3,7 @@ package com.russellworld.sofegram.ui.screens.singl_chat
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
 import android.widget.AbsListView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +17,7 @@ import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.UserModel
 import com.russellworld.sofegram.ui.message_recycle_view.views.AppViewFactory
 import com.russellworld.sofegram.ui.screens.BaseFragment
+import com.russellworld.sofegram.ui.screens.settings.ChangeNameFragment
 import com.russellworld.sofegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -57,6 +57,7 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initFields() {
+        setHasOptionsMenu(true)
         mBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_choice)
         mBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         mAppVoiceRecorder = AppVoiceRecorder()
@@ -246,5 +247,19 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
         super.onDestroy()
         mAppVoiceRecorder.releaseRecord()
         mAdapter.onDestroy()
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        /* Создания выпадающего меню*/
+        activity?.menuInflater?.inflate(R.menu.singl_chat_action_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        /* Слушатель выбора пунктов выпадающего меню */
+        when (item.itemId) {
+
+        }
+        return true
     }
 }

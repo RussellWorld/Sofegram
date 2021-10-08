@@ -1,10 +1,11 @@
-package com.russellworld.sofegram.ui.screens
+package com.russellworld.sofegram.ui.screens.settings
 
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.database.CURRENT_UID
 import com.russellworld.sofegram.database.NODE_USERNAMES
 import com.russellworld.sofegram.database.REF_DATABASE_ROOT
 import com.russellworld.sofegram.database.USER
+import com.russellworld.sofegram.ui.screens.BaseChangeFragment
 import com.russellworld.sofegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_change_user_name.*
 
