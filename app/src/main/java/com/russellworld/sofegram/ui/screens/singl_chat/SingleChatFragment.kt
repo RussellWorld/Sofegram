@@ -17,7 +17,7 @@ import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.UserModel
 import com.russellworld.sofegram.ui.message_recycle_view.views.AppViewFactory
 import com.russellworld.sofegram.ui.screens.BaseFragment
-import com.russellworld.sofegram.ui.screens.settings.ChangeNameFragment
+import com.russellworld.sofegram.ui.screens.main_list.MainListFragment
 import com.russellworld.sofegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -258,6 +258,14 @@ class SingleChatFragment(private val contact: CommonModel) : BaseFragment(R.layo
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         /* Слушатель выбора пунктов выпадающего меню */
         when (item.itemId) {
+            R.id.menu_clear_chat -> clearChat(contact.id) {
+                showToast("Чат очищен")
+                replaceFragment(MainListFragment())
+            }
+            R.id.menu_delete_chat -> deleteChat(contact.id) {
+                showToast("Чат удален")
+                replaceFragment(MainListFragment())
+            }
 
         }
         return true
