@@ -16,10 +16,12 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 import com.russellworld.sofegram.R
-import com.russellworld.sofegram.ui.screens.ContactsFragment
+import com.russellworld.sofegram.ui.screens.contacts.ContactsFragment
 import com.russellworld.sofegram.ui.screens.settings.SettingsFragment
 import com.russellworld.sofegram.utilits.APP_ACTIVITY
 import com.russellworld.sofegram.database.USER
+import com.russellworld.sofegram.ui.screens.groups.AddContactsAdapter
+import com.russellworld.sofegram.ui.screens.groups.AddContactsFragment
 import com.russellworld.sofegram.utilits.downloadAndSetImage
 import com.russellworld.sofegram.utilits.replaceFragment
 
@@ -131,6 +133,7 @@ class AppDrawer() {
 
     private fun clickToItem(position: Int) {
         when (position) {
+            1 -> replaceFragment(AddContactsFragment())
             7 -> replaceFragment(SettingsFragment())
             4 -> replaceFragment(ContactsFragment())
 

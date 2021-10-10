@@ -16,7 +16,7 @@ import com.russellworld.sofegram.database.*
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.models.UserModel
 import com.russellworld.sofegram.ui.message_recycle_view.views.AppViewFactory
-import com.russellworld.sofegram.ui.screens.BaseFragment
+import com.russellworld.sofegram.ui.screens.base.BaseFragment
 import com.russellworld.sofegram.ui.screens.main_list.MainListFragment
 import com.russellworld.sofegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage

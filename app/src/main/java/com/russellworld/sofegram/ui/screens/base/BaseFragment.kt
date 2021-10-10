@@ -1,4 +1,4 @@
-package com.russellworld.sofegram.ui.screens
+package com.russellworld.sofegram.ui.screens.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

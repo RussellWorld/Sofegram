@@ -7,7 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.database.*
-import com.russellworld.sofegram.ui.screens.BaseFragment
+import com.russellworld.sofegram.ui.screens.base.BaseFragment
 import com.russellworld.sofegram.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
