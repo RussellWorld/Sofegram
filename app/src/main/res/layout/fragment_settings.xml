@@ -164,7 +164,7 @@
         android:layout_height="@dimen/settings_btn_change_photo_height"
         android:layout_marginEnd="@dimen/app_margin"
         android:src="@drawable/outline_photo_camera_black_24"
-        app:civ_border_color="@color/grey"
+        app:civ_border_color="@color/colorGrey"
         app:civ_circle_background_color="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/settings_header_block"
         app:layout_constraintEnd_toEndOf="parent"

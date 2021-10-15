@@ -5,10 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.database.*
 import com.russellworld.sofegram.models.CommonModel
-import com.russellworld.sofegram.utilits.APP_ACTIVITY
-import com.russellworld.sofegram.utilits.AppValueEventListener
-import com.russellworld.sofegram.utilits.getCommonModel
-import com.russellworld.sofegram.utilits.hideKeyboard
+import com.russellworld.sofegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_add_contacts.*
 
 /* Главный фрагмент, содержит все чаты, группы и каналы с которыми взаимодействует пользователь*/
@@ -29,12 +26,10 @@ class AddContactsFragment : Fragment(R.layout.fragment_contacts) {
         hideKeyboard()
         iniRecyclerView()
         add_contacts_btn_next.setOnClickListener {
-            listContacts.forEach {
-                println(it.id)
-            }
+            replaceFragment(CreateGroupFragment(listContacts))
         }
-
     }
+
 
     private fun iniRecyclerView() {
         mRecyclerView = add_contacts_recycle_view
