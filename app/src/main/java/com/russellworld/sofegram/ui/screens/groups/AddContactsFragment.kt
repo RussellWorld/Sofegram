@@ -1,16 +1,16 @@
 package com.russellworld.sofegram.ui.screens.groups
 
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.database.*
 import com.russellworld.sofegram.models.CommonModel
+import com.russellworld.sofegram.ui.screens.base.BaseFragment
 import com.russellworld.sofegram.utilits.*
 import kotlinx.android.synthetic.main.fragment_add_contacts.*
 
 /* Главный фрагмент, содержит все чаты, группы и каналы с которыми взаимодействует пользователь*/
 
-class AddContactsFragment : Fragment(R.layout.fragment_contacts) {
+class AddContactsFragment : BaseFragment(R.layout.fragment_contacts) {
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: AddContactsAdapter
@@ -21,12 +21,13 @@ class AddContactsFragment : Fragment(R.layout.fragment_contacts) {
 
     override fun onResume() {
         super.onResume()
+        listContacts.clear()
         APP_ACTIVITY.title = "Добавить участника"
-        APP_ACTIVITY.mAppDrawer.enableDrawer()
         hideKeyboard()
         iniRecyclerView()
         add_contacts_btn_next.setOnClickListener {
-            replaceFragment(CreateGroupFragment(listContacts))
+            if (listContacts.isEmpty()) showToast("Добавьте участников")
+            else replaceFragment(CreateGroupFragment(listContacts))
         }
     }
 

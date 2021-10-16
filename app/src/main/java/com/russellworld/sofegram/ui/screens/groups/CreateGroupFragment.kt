@@ -5,6 +5,7 @@ import com.russellworld.sofegram.R
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.ui.screens.base.BaseFragment
 import com.russellworld.sofegram.utilits.APP_ACTIVITY
+import com.russellworld.sofegram.utilits.getPlurals
 import com.russellworld.sofegram.utilits.hideKeyboard
 import com.russellworld.sofegram.utilits.showToast
 import kotlinx.android.synthetic.main.fragment_create_group.*
@@ -16,13 +17,13 @@ class CreateGroupFragment(var listContacts: List<CommonModel>) : BaseFragment(R.
     override fun onResume() {
         super.onResume()
         APP_ACTIVITY.title = "Создать группу"
-        APP_ACTIVITY.mAppDrawer.enableDrawer()
         hideKeyboard()
         iniRecyclerView()
         create_group_btn_complete.setOnClickListener {
             showToast("Click")
         }
         create_group_input_name.requestFocus()
+        create_group_counts.text = getPlurals(listContacts.size)
     }
 
 
