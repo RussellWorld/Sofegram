@@ -1,29 +1,61 @@
 package com.russellworld.sofegram.ui.screens.groups
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.models.CommonModel
 import com.russellworld.sofegram.ui.screens.base.BaseFragment
-import com.russellworld.sofegram.utilits.APP_ACTIVITY
-import com.russellworld.sofegram.utilits.getPlurals
-import com.russellworld.sofegram.utilits.hideKeyboard
-import com.russellworld.sofegram.utilits.showToast
+import com.russellworld.sofegram.ui.screens.main_list.MainListFragment
+import com.russellworld.sofegram.utilits.*
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_create_group.*
 
-class CreateGroupFragment(var listContacts: List<CommonModel>) : BaseFragment(R.layout.fragment_create_group) {
+class CreateGroupFragment(var listContacts: List<CommonModel>) :
+    BaseFragment(R.layout.fragment_create_group) {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: AddContactsAdapter
+    private var mUri = Uri.EMPTY
 
     override fun onResume() {
         super.onResume()
         APP_ACTIVITY.title = "Создать группу"
         hideKeyboard()
         iniRecyclerView()
+        create_group_photo.setOnClickListener { addPhoto() }
         create_group_btn_complete.setOnClickListener {
-            showToast("Click")
+           val nameGroup = create_group_input_name.text.toString()
+            if(nameGroup.isEmpty()){
+                showToast("Введите имя")
+            } else {
+                createGroupToDatabase(nameGroup, mUri, listContacts){
+                    replaceFragment(MainListFragment())
+                }
+            }
         }
         create_group_input_name.requestFocus()
         create_group_counts.text = getPlurals(listContacts.size)
+    }
+
+    private fun addPhoto() {
+        CropImage.activity()
+            .setAspectRatio(1, 1)
+            .setRequestedSize(250, 250)
+            .setCropShape(CropImageView.CropShape.OVAL)
+            .start(APP_ACTIVITY, this)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        /* Активность которая запускается для получения картинки для фото пользователя */
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
+            && resultCode == Activity.RESULT_OK && data != null
+        ) {
+            mUri = CropImage.getActivityResult(data).uri
+            create_group_photo.setImageURI(mUri)
+        }
     }
 
 

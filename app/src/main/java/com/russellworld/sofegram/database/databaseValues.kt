@@ -11,14 +11,20 @@ lateinit var REF_DATABASE_ROOT: DatabaseReference
 lateinit var REF_STORAGE_ROOT: StorageReference
 lateinit var USER: UserModel
 const val TYPE_TEXT = "text"
+const val USER_CREATOR = "creator"
+const val USER_ADMIN = "admin"
+const val USER_MEMBER = "members"
 const val NODE_USERS = "users"
 const val NODE_USERNAMES = "usernames"
 const val NODE_PHONES = "phones"
 const val NODE_PHONES_CONTACTS = "phones_contacts"
 const val FOLDER_PROFILE_IMAGE = "profile_image"
 const val FOLDER_FILES = "messages_files"
+const val FOLDER_GROUPS_IMAGE = "groups_image"
 const val NODE_MESSAGES = "messages"
 const val NODE_MAIN_LIST = "main_list"
+const val NODE_GROUPS = "groups"
+const val NODE_MEMBER = "member"
 
 const val CHILD_ID = "id"
 const val CHILD_PHONE = "phone"
