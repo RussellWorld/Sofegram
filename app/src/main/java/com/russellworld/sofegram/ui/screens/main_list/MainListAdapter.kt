@@ -7,7 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.russellworld.sofegram.R
 import com.russellworld.sofegram.models.CommonModel
+import com.russellworld.sofegram.ui.screens.groups.GroupChatFragment
 import com.russellworld.sofegram.ui.screens.singl_chat.SingleChatFragment
+import com.russellworld.sofegram.utilits.TYPE_CHAT
+import com.russellworld.sofegram.utilits.TYPE_GROUP
 import com.russellworld.sofegram.utilits.downloadAndSetImage
 import com.russellworld.sofegram.utilits.replaceFragment
 import de.hdodenhof.circleimageview.CircleImageView
@@ -27,7 +30,10 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>() {
 
         val holder = MainListHolder(view)
         holder.itemView.setOnClickListener {
-            replaceFragment(SingleChatFragment(listItems[holder.adapterPosition]))
+            when(listItems[holder.adapterPosition].type){
+                TYPE_CHAT -> replaceFragment(SingleChatFragment(listItems[holder.adapterPosition]))
+                TYPE_GROUP -> replaceFragment(GroupChatFragment(listItems[holder.adapterPosition]))
+            }
         }
         return holder
     }
